@@ -25,7 +25,6 @@ const MainPage: FC = () => {
 
     return (
         <div className="mainPage_wrapper">
-            
             <p className={`text ${activeClassName}`} style={{position:'absolute', marginLeft: ClientX+'px', marginTop: (ClientY)+'px'}}>+1</p>
             <div className="gameArea_menu">
                 <h1 className="cookiesCount">{cookieCount}</h1>

@@ -2,7 +2,7 @@
     width: 30%;
     height: 60vh;
     margin-left: 35%;
-    margin-top: 10vh;
+    margin-top: 15vh;
     text-align: center;
 }
 
@@ -46,7 +46,6 @@ to {
 
 .active{
     animation: clickAnimation 0.4s;
-    
 }
 
 @keyframes clickAnimation {
@@ -56,6 +55,6 @@ to {
     }
     to {
         opacity: 100;
-        transform: translateY(-100px);
+        transform: translateY(-140px);
     }
 }
