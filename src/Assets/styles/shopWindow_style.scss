@@ -1,0 +1,71 @@
+@import url(../../font/stylesheet.css);
+
+.modal-window-title{
+    font-size: 215%;
+    margin-top: 5vh;
+}
+
+.production-container{
+    width: 80%;
+    height: 60vh;
+    margin-left: 10%;
+    margin-top: 7vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    
+}
+
+.product{
+    width: 70%;
+    margin-left: 15%;
+    height: 40vh;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    float: left;
+    margin-right: 10%;
+    margin-bottom: 5vh;
+    border-radius: 2em;
+}
+
+.product-image-container{
+    width: 80%;
+    height: 15vh;
+    margin-left: 10%;
+    margin-top: 2.5vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.product-image{
+    width: auto;
+    height: 100%;
+}
+
+.product-name{
+    font-size: 120%;
+    font-family: "Stem";
+    font-weight: 500;
+}
+
+.product-description{
+    width: 85%;
+    height: auto;
+    margin-left: 7.5%;
+    word-wrap: break-word;
+    font-size: 90%;
+    margin-top: -1vh;
+}
+
+.product-cost{
+    margin-top: 1.5vh;
+    font-family: "Stem";
+    font-weight: 350;
+    font-size: 105%;
+}
+
+.product-buy-button{
+    width: 60%;
+    height: 3vh;
+}

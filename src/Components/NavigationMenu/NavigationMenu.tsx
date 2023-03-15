@@ -10,13 +10,10 @@ import ShopWindow from '../ShopWindow/ShopWindow';
 const NavigationMenu: FC = () => {
 
     const [isSwitchedHamMenu, setIsSwitchedHamMenu] = useState<boolean>(false)
-    const [isSwitchedShopWind, setIsSwitchedShopWind] = useState<boolean>(false)
+    const [isSwitchedShopWind, setIsSwitchedShopWind] = useState<boolean>(true)
     const [isSwitchedInvent, setIsSwitchedInvent] = useState<boolean>(false)
 
     const menuSwitcher: (value: boolean, hookFunc: any) => void = (value: boolean, hookFunc: any) => hookFunc(value ? false : true)
-
-    useEffect(()=>{
-    },[])
 
     return (
         <>

@@ -1,16 +1,17 @@
 import React, { FC, useState } from 'react';
 import "./../../Assets/styles/mainPage_style.scss";
 import cookie from "./../../Assets/img/cookie_1.png"
+import { connect } from 'react-redux';
+import { AppStateType } from '../../Redux/store';
+import { GameStateInitialStateType, setCookie } from '../../Redux/Reducers/gameStateReducer';
 
-const MainPage: FC = () => {
+type PropsType = {
+    gameState: GameStateInitialStateType,
+    setCookie: (cookie: number) => void
+}
 
-    const Aab = () => {
-        return(
-            <p className={`text ${activeClassName}`} style={{position:'absolute', marginLeft: ClientX+'px', marginTop: (ClientY)+'px'}}>+1</p>
-        )
-    }
+const MainPage = (props: PropsType) => {
     
-    const [cookieCount, setCookieCount] = useState(0);
     const [activeClassName, setactiveClassName] = useState('notActive');
     const [ClientX, setClientX] = useState('notActive');
     const [ClientY, setClientY] = useState('notActive');
@@ -20,14 +21,14 @@ const MainPage: FC = () => {
         setTimeout(()=>{setactiveClassName('notActive')}, 400)
         setClientX(event.clientX) 
         setClientY(event.clientY)
-        setCookieCount((prev: number) => prev+=1)
+        props.setCookie(props.gameState.cookieCount + props.gameState.cookiePerClick)
     }
 
     return (
         <div className="mainPage_wrapper">
-            <p className={`text ${activeClassName}`} style={{position:'absolute', marginLeft: ClientX+'px', marginTop: (ClientY)+'px'}}>+1</p>
+            <p className={`text ${activeClassName}`} style={{position:'absolute', marginLeft: ClientX+'px', marginTop: (ClientY)+'px'}}>+{props.gameState.cookiePerClick}</p>
             <div className="gameArea_menu">
-                <h1 className="cookiesCount">{cookieCount}</h1>
+                <h1 className="cookiesCount">{props.gameState.cookieCount}</h1>
                 <div className="cookie_block" >
                     <img className="cookie-img" src={cookie} onClick={(event)=>{grabCookies(event)}}/>
                 </div>
@@ -37,4 +38,8 @@ const MainPage: FC = () => {
     );
 };
 
-export default MainPage;
+let mapStateToProps = (state: AppStateType) => ({
+    gameState: state.gameState
+})
+
+export default connect(mapStateToProps, { setCookie })(MainPage);

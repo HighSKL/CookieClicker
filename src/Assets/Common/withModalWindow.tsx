@@ -15,14 +15,14 @@ const withModalWindow = <BaseProps extends PropsType>(Component: React.Component
         }
 
         return (
-            <div className="modalWindow_wrapper" onClick={closeWindowHandler}>
-                <div className="modalWindow-block">
+            <div className="modal-window_wrapper" onClick={closeWindowHandler}>
+                <div className="modal-window-block">
                     <Component {...props} />
                 </div>
             </div>
         );
     }
-    
+
 };
 
 export default withModalWindow;
