@@ -48,6 +48,75 @@ to {
     animation: clickAnimation 0.4s;
 }
 
+.boosters-container{
+    width: 30%;
+    height: auto;
+    max-height: 50vh;
+    background-color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 2em;
+    margin-right: 2%;
+    margin-top: 2vh;
+    overflow-y: scroll;
+}
+
+.active-booster{
+    width: 90%;
+    height: 13vh;
+    border-radius: 2em;
+    margin-left: 5%;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+    box-shadow: .5px .5px 3px 0px rgba(0, 0, 0, 0.534);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+}
+
+.booster-image-container{
+    width: 20%;
+    height: 11vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    float: left;
+    margin-left: 5%;
+}
+
+.booster-image{
+    width: auto;
+    height: 100%;
+}
+
+.booster-name{
+    width: 30%;
+    height: 12vh;
+    font-size: 105%;
+    margin-left: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.timer-block{
+    width: 30%;
+    height: 12vh;
+    margin-left: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p{
+        font-size: 120%;
+    }
+}
+
+
 @keyframes clickAnimation {
     from {
         opacity: 0;

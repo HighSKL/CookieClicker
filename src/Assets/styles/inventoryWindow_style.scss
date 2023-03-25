@@ -1,50 +1,6 @@
-@import url(../../font/stylesheet.css);
-
-.modal-window-title{
-    font-size: 215%;
-    margin-top: 5vh;
-}
-
-.multiplier-container{
-    width: 70%;
-    margin-left: 15%;
-    height: 5vh;
-    margin-top: 2.5vh;
-    display: flex;
-    align-items: center;
-}
-
-.multiplier-block{
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 7%;
-    height: 6vh;
-    margin-right: 3%;
-    border-radius: 1.5em;
-    background-color: rgb(238, 238, 238);
-    p{
-        font-size: 75%;
-    }
-}
-
-.chosed{
-    animation-fill-mode: forwards;
-    width: 8%;
-    height: 7vh;
-    border: 2px solid black inset; 
-}
-
-.shop-container{
-    margin-top: 2.5vh;
-}
-
-.improve-title{
-    font-family: "Stem";
-    font-weight: 500;
-    margin-top: 3vh;
-    font-size: 120%;
+.inventory-wrapper{
+    width: 100%;
+    height: auto;
 }
 
 .production-container{

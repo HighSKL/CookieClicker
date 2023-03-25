@@ -2,7 +2,7 @@ import React, { MouseEventHandler, Dispatch, FC, SetStateAction } from 'react';
 import "./../styles/modalWindow_style.scss";
 
 type PropsType = {
-    closeWindow: () => void;
+    closeWindow: () => void,
 }
 
 const withModalWindow = <BaseProps extends PropsType>(Component: React.ComponentType<BaseProps>) => {
