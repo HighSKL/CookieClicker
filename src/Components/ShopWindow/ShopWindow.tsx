@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import withModalWindow from '../../Assets/Common/withModalWindow';
 import { IBooster, MultipliesType, ProductType } from '../../Assets/Types/types';
@@ -7,7 +7,6 @@ import { GameStateInitialStateType, setPower, setCookie } from '../../Redux/Redu
 import { AppStateType } from '../../Redux/store';
 import "./../../Assets/styles/shopWindow_style.scss"
 import { addBooster, InventoryPageInitialStateType } from '../../Redux/Reducers/inventoryReducer';
-import { tempImproveProductsRender } from '../../Assets/Common/renders';
 
 type PropsType = {
     closeWindow: () => void,
@@ -24,13 +23,15 @@ const ShopWindow = (props: PropsType) => {
     const [chosedProduct, setChosedProduct] = useState<MultipliesType | null>(null);
 
     const buyUpdateProduct = ( product: ProductType ) => {
-        props.setCookie((props.gameState.cookieCount - product.cost)*(chosedProduct?chosedProduct.multiplie:1))
+        props.setCookie(props.gameState.cookieCount - (product.cost*(chosedProduct?chosedProduct.multiplie:1)))
         props.setPower((props.gameState.cookiePower.basePower + product.effect)*(chosedProduct?chosedProduct.multiplie:1))
     }
 
     const buyTempUpdateProduct = ( product: IBooster ) => {
-        props.setCookie((props.gameState.cookieCount - product.cost)*(chosedProduct?chosedProduct.multiplie:1))
-        props.addBooster(product);
+        props.setCookie(props.gameState.cookieCount - (product.cost*(chosedProduct?chosedProduct.multiplie:1)))
+        for(let i = 0; i < (chosedProduct?chosedProduct.multiplie:1); i++){
+            props.addBooster(product);
+        }
     }
 
 
@@ -44,7 +45,7 @@ const ShopWindow = (props: PropsType) => {
                 <p className="product-cost">{element.cost*(chosedProduct?chosedProduct.multiplie:1)}</p>
                 {
                     props.gameState.cookieCount - (element.cost*(chosedProduct?chosedProduct.multiplie:1)) >= 0 ? <button className="product-buy-button" onClick={() => { buyUpdateProduct(element) }}>Купить</button> :
-                        <button disabled className="l">Купить</button>
+                        <button disabled>Купить</button>
                 }
             </div>
     )
@@ -60,9 +61,9 @@ const ShopWindow = (props: PropsType) => {
                 </div>
                 <p className="product-name">{element.name}</p>
                 <div className="product-description">{element.description}</div>
-                <p className="product-cost">{element.cost}</p>
+                <p className="product-cost">{element.cost*(chosedProduct?chosedProduct.multiplie:1)}</p>
                 {
-                    props.gameState.cookieCount - element.cost >= 0 ? <button className="product-buy-button" onClick={() => { buyTempUpdateProduct(element) }}>Купить</button> :
+                    props.gameState.cookieCount - (element.cost*(chosedProduct?chosedProduct.multiplie:1)) >= 0 ? <button className="product-buy-button" onClick={() => { buyTempUpdateProduct(element) }}>Купить</button> :
                         <button disabled className="l">Купить</button>
                 }
             </div>

@@ -9,9 +9,7 @@ const initialState = {
         {id: 90239025, name: "Барбариска", cost: 10, img: "https://cdn.metro-cc.ru/ru/ru_pim_25993001002_01.png", description: "+0.5 к нажатию", effect: .5 }
     ] as Array<ProductType>,
     tempImproveProducts: [
-        {id: 90239026, name: "Аскорбинка", cost: 5, img: "https://apteka245.ru/img/drugs/nnt16888.jpg", description: "+2 к нажатию в течении 10 секунд", timing: 10, effect: 2},
-        {id: 90239027, name: "Аскорбинка", cost: 5, img: "https://apteka245.ru/img/drugs/nnt16888.jpg", description: "+2 к нажатию в течении 10 секунд", timing: 10, effect: 2},
-        {id: 90239028, name: "Аскорбинка", cost: 5, img: "https://apteka245.ru/img/drugs/nnt16888.jpg", description: "+2 к нажатию в течении 10 секунд", timing: 10, effect: 2}
+        {id: 90239026, name: "Аскорбинка", cost: 1, img: "https://apteka245.ru/img/drugs/nnt16888.jpg", description: "+2 к нажатию в течении 10 секунд", timing: 10, effect: 2},
     ] as Array<IBooster>
 }
 
