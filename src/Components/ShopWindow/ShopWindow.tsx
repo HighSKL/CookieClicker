@@ -25,7 +25,7 @@ const ShopWindow = (props: PropsType) => {
 
     const buyUpdateProduct = ( product: ProductType ) => {
         props.setCookie((props.gameState.cookieCount - product.cost)*(chosedProduct?chosedProduct.multiplie:1))
-        props.setPower((props.gameState.cookiePerClick + product.effect)*(chosedProduct?chosedProduct.multiplie:1))
+        props.setPower((props.gameState.cookiePower.basePower + product.effect)*(chosedProduct?chosedProduct.multiplie:1))
     }
 
     const buyTempUpdateProduct = ( product: IBooster ) => {

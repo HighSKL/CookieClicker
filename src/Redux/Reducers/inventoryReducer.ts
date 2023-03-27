@@ -8,10 +8,7 @@ const ADD_BOOSTER = "ADD-BOOSTER";
 const USE_BOOSTER = "USE-BOOSTER";
 
 const initialState = {
-    products: [
-        { id: 90239029, name: "Аскорбинка", cost: 5, img: "https://apteka245.ru/img/drugs/nnt16888.jpg", description: "+2 к нажатию в течении 10 секунд", timing: 10, effect: 2 },
-        { id: 90239030, name: "Аскорбинка", cost: 5, img: "https://apteka245.ru/img/drugs/nnt16888.jpg", description: "+2 к нажатию в течении 10 секунд", timing: 10, effect: 2 }
-    ] as Array<IBooster>
+    products: [] as Array<IBooster>
 }
 
 let inventoryReducer = (state: InventoryPageInitialStateType = initialState, action: any) => {

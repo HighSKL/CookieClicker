@@ -1,4 +1,4 @@
-import { IBooster, MultipliesType, ProductType } from "../../Assets/Types/types";
+import { BoosterEffectType, CookiePerClickType, IBooster, MultipliesType, ProductType } from "../../Assets/Types/types";
 
 const SET_COOKIE_PER_CLICK = "SET-COOKIE-PER-CLICK";
 const SET_COOKIE_COUNT = "SET-COOKIE-COUNT";
@@ -8,7 +8,15 @@ const SET_BOOSTER_TIMING = "SET-BOOSTER-TIMING";
 export type GameStateInitialStateType = typeof initialState
 
 const initialState = {
-    cookiePerClick: 1 as number,
+    cookiePower: {
+        basePower: 1,
+        effectPower: [],
+        resultPower() {
+            let effectPowerSumm = 0;
+            this.effectPower.forEach((element: BoosterEffectType | null) => element != null?effectPowerSumm += element?.effect:null)
+            return effectPowerSumm + this.basePower;
+        }
+    } as CookiePerClickType,
     tempEffects: 0 as number,
     cookieCount: 0 as number,
     multiplies: [
@@ -16,16 +24,13 @@ const initialState = {
         { multiplie: 50 },
         { multiplie: 100 }
     ] as Array<MultipliesType>,
-    activeBoosters: [
-        { id: 90239053, name: "Аскорбинка", cost: 5, img: "https://apteka245.ru/img/drugs/nnt16888.jpg", description: "+2 к нажатию в течении 10 секунд",timing: 4, effect: 2 },
-        { id: 90239053, name: "Аскорбинка", cost: 5, img: "https://apteka245.ru/img/drugs/nnt16888.jpg", description: "+2 к нажатию в течении 10 секунд",timing: 10, effect: 2 }
-    ] as Array<IBooster>
+    activeBoosters: [] as Array<IBooster>
 }
 
 let gameStateReducer = (state: GameStateInitialStateType = initialState, action: any) => {
     switch (action.type) {
         case SET_COOKIE_PER_CLICK:
-            return { ...state, cookiePerClick: action.cookiePerClick }
+            return { ...state, cookiePower: { ...state.cookiePower, basePower: action.cookiePerClick } }
         case SET_COOKIE_COUNT:
             return { ...state, cookieCount: action.cookie }
         case SET_ACTIVE_BOOSTER:
@@ -33,19 +38,18 @@ let gameStateReducer = (state: GameStateInitialStateType = initialState, action:
         case SET_BOOSTER_TIMING:
             {
                 let sortedArr = state.activeBoosters.map((element: IBooster) => {
-                        element.timing--
-                        if (element.timing >= 1){
-                            return { ...element }
-                        }
-                    })
-                let tt = 0;
-                state.activeBoosters.forEach((element:IBooster)=>{
-                    tt+=element.effect
+                    let eeffect: BoosterEffectType = { id: element.id, effect: element.effect }
+                    element.timing--
+                    if (element.timing >= 1) {
+                        let isReapetted = false
+                        state.cookiePower.effectPower.forEach(item => item?.id == element.id?isReapetted = true:null);
+                        if(!isReapetted)
+                            state.cookiePower.effectPower.push(eeffect)
+                        return { ...element }
+                    }
+                    state.cookiePower.effectPower.forEach(item => item?.id == element.id?state.cookiePower.effectPower.splice(state.cookiePower.effectPower.map(e => e?.id).indexOf(eeffect.id), 1):null);
                 })
-                if(state.cookiePerClick > tt){
-                    tt = state.cookiePerClick - tt
-                }
-                return {...state, activeBoosters: [...sortedArr.filter((element:any)=> element !== undefined)], cookiePerClick: tt}
+                return { ...state, activeBoosters: [...sortedArr.filter((element: any) => element !== undefined)] }
             }
         default:
             return state

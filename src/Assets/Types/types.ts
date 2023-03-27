@@ -14,3 +14,14 @@ export interface IBooster extends ProductType {
 export type MultipliesType = {
     multiplie: number
 }
+
+export type BoosterEffectType = {
+    id: number
+    effect: number
+}
+
+export type CookiePerClickType = {
+    basePower: number
+    effectPower: Array<BoosterEffectType|null>
+    resultPower: () => number
+}

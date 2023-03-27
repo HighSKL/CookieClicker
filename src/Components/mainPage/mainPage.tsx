@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { AppStateType } from '../../Redux/store';
 import { GameStateInitialStateType, setBoosterTiming, setCookie, setPower } from '../../Redux/Reducers/gameStateReducer';
 import { IBooster } from '../../Assets/Types/types';
+import ActiveBoostersPanel from '../../Assets/Common/activeBoostersPanel';
 
 type PropsType = {
     gameState: GameStateInitialStateType
@@ -19,42 +20,20 @@ const MainPage = (props: PropsType) => {
     const [ClientX, setClientX] = useState('notActive');
     const [ClientY, setClientY] = useState('notActive');
 
-    useEffect(()=>{
-        if(props.gameState.activeBoosters.length > 0){
-            setTimeout(()=>{
-                props.setBoosterTiming()
-            }, 1000)
-        }
-    })
-
     const grabCookies = (event: any) => {
         setactiveClassName('active')
         setTimeout(() => { setactiveClassName('notActive') }, 400)
         setClientX(event.clientX)
         setClientY(event.clientY)
-        props.setCookie(props.gameState.cookieCount + props.gameState.cookiePerClick)
+        props.setCookie(props.gameState.cookieCount + props.gameState.cookiePower.resultPower())
     }
-
-    const renderActiveBoosters = props.gameState.activeBoosters.map((booster: IBooster) => {
-        return (
-            <div className="active-booster">
-                <div className="booster-image-container">
-                    <img className="booster-image" src={`${booster.img}`} alt="" />
-                </div>
-                <div className="booster-name">{booster.name}</div>
-                <div className="timer-block">
-                    <p>{booster.timing}</p>
-                </div>
-            </div>
-        )
-    })
 
     return (
         <div className="mainPage_wrapper">
             <div className="boosters-container">
-                {renderActiveBoosters}
+                <ActiveBoostersPanel />
             </div>
-            <p className={`text ${activeClassName}`} style={{ position: 'absolute', marginLeft: ClientX + 'px', marginTop: (ClientY) + 'px' }}>+{props.gameState.cookiePerClick}</p>
+            <p className={`text ${activeClassName}`} style={{ position: 'absolute', marginLeft: ClientX + 'px', marginTop: (ClientY) + 'px' }}>+{props.gameState.cookiePower.resultPower()}</p>
             <div className="gameArea_menu">
                 <h1 className="cookiesCount">{props.gameState.cookieCount}</h1>
                 <div className="cookie_block" >
