@@ -1,8 +1,7 @@
 import { IBooster } from "../../Assets/Types/types";
+import { random } from "../../Assets/functions";
 
 export type InventoryPageInitialStateType = typeof initialState;
-
-let random = () => Math.floor(Math.random()*99999999)
 
 const ADD_BOOSTER = "ADD-BOOSTER";
 const USE_BOOSTER = "USE-BOOSTER";

@@ -25,3 +25,10 @@ export type CookiePerClickType = {
     effectPower: Array<BoosterEffectType|null>
     resultPower: () => number
 }
+
+export type GamesType = {
+    id: number
+    img: string
+    name: string
+    windowOpened: boolean
+}

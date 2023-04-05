@@ -10,6 +10,11 @@
     margin-top: 6vh;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    .empty-inventory-text{
+        width: 100%;
+        font-size: 110%;
+        margin-left: 20%;
+    }
 }
 
 .product{

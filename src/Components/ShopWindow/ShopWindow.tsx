@@ -27,7 +27,7 @@ const ShopWindow = (props: PropsType) => {
         props.setPower((props.gameState.cookiePower.basePower + product.effect)*(chosedProduct?chosedProduct.multiplie:1))
     }
 
-    const buyTempUpdateProduct = ( product: IBooster ) => {
+    const buyBooster = ( product: IBooster ) => {
         props.setCookie(props.gameState.cookieCount - (product.cost*(chosedProduct?chosedProduct.multiplie:1)))
         for(let i = 0; i < (chosedProduct?chosedProduct.multiplie:1); i++){
             props.addBooster(product);
@@ -63,7 +63,7 @@ const ShopWindow = (props: PropsType) => {
                 <div className="product-description">{element.description}</div>
                 <p className="product-cost">{element.cost*(chosedProduct?chosedProduct.multiplie:1)}</p>
                 {
-                    props.gameState.cookieCount - (element.cost*(chosedProduct?chosedProduct.multiplie:1)) >= 0 ? <button className="product-buy-button" onClick={() => { buyTempUpdateProduct(element) }}>Купить</button> :
+                    props.gameState.cookieCount - (element.cost*(chosedProduct?chosedProduct.multiplie:1)) >= 0 ? <button className="product-buy-button" onClick={() => { buyBooster(element) }}>Купить</button> :
                         <button disabled className="l">Купить</button>
                 }
             </div>

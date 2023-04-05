@@ -1,0 +1,1 @@
+export let random = () => Math.floor(Math.random()*99999999)

@@ -39,7 +39,7 @@ let gameStateReducer = (state: GameStateInitialStateType = initialState, action:
             {
                 let sortedArr = state.activeBoosters.map((element: IBooster) => {
                     let eeffect: BoosterEffectType = { id: element.id, effect: element.effect }
-                    element.timing--
+                    element.timing-=1
                     if (element.timing >= 1) {
                         let isReapetted = false
                         state.cookiePower.effectPower.forEach(item => item?.id == element.id?isReapetted = true:null);

@@ -12,8 +12,7 @@ type PropsType = {
 const ActiveBoostersPanel = (props:PropsType) => {
 
     useEffect(()=>{
-        console.log("useeffectcalled")
-        let timeout: any;
+        let timeout: ReturnType<typeof setTimeout>
         if(props.gameState.activeBoosters.length > 0)
             timeout = setTimeout(()=>props.setBoosterTiming(), 1000)
         return () => clearTimeout(timeout)
