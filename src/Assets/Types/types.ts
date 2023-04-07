@@ -32,3 +32,10 @@ export type GamesType = {
     name: string
     windowOpened: boolean
 }
+
+export type CellType = {
+    id: number
+    isOpen: boolean
+    isBombContain: boolean
+    bonus: number
+}

@@ -1,0 +1,137 @@
+.game-container{
+    width: 100%;
+    height: 100%;
+}
+
+.game-area-container{
+    width: 50%;
+    height: 90%;
+    margin-top: 1.5%;
+    float: right;
+    margin-right: 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    padding-top: 2vh;
+}
+
+.cell{
+    width: 80%;
+    margin-left: 10%;
+    height: 75%;
+    float: left;
+    border-radius: 1.5em;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover{
+        transform: scale(1.05);
+        transition: .3s ease;
+    }
+    p{
+        color: white;
+        font-size: 120%;
+        font-family: Stem;
+        font-weight: 300;
+    }
+    img{
+        width: 100%;
+        height: auto;
+    }
+}
+
+.closeCell{
+    background-color: white;
+    
+}
+
+.openCell{
+    animation: openCellAnimation .6s ease;
+    animation-fill-mode: forwards;
+}
+
+.game-settings-block{
+    float: left;
+    width: 40%;
+    height: 100%;
+}
+
+.set-cookie-payed-block{
+    width: 100%;
+    height: auto;
+    p{
+        float: left;
+    }
+    input[type=range] {
+        margin: 10px 0;
+        appearance: none;
+        width: 100%;
+        float: left;
+    }
+    input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: .5vh;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+        background: rgb(229, 229, 229);
+        border-radius: 25px;
+    }
+    input[type=range]::-webkit-slider-thumb {
+        height: 20px;
+        width: 20px;
+        border-radius: 50%;
+        box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.512);
+        background: white;
+        cursor: pointer;
+        appearance: none;
+        margin-top: -2%;
+    }
+}
+
+.start-game-button{
+    margin-top: 100%;
+
+    border: 0;
+    border-radius: 5px;
+    background: rgb(50, 89, 202);
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 100%;
+    &:hover {
+        background: rgb(41, 72, 164);
+      }
+      
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px #cbd6ee;
+    }
+}
+
+.end-game-button{
+    margin-top: 100%;
+
+    border: 0;
+    border-radius: 5px;
+    background: rgb(202, 50, 50);
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 100%;
+    &:hover {
+        background: rgb(41, 72, 164);
+      }
+      
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 4px #cbd6ee;
+    }
+}
+
+@keyframes openCellAnimation {
+    from{
+        background-color: white;
+    }
+    to{
+        background-color: black;
+    }
+}

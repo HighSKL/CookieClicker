@@ -6,8 +6,10 @@ type PropsType = {}
 const withGameModalWindow = <BaseProps extends PropsType>(Component: ComponentType<BaseProps>) => {
     return function (props: BaseProps) {
         return (
-            <div className='game-window'>
-                <Component {...props} />
+            <div className="game-window">
+                <div className="game-block-container">
+                    <Component {...props} />
+                </div>
             </div>
         );
     }

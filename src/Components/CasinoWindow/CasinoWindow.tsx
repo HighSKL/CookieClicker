@@ -24,6 +24,12 @@ const CasinoWindow = (props: PropsType) => {
 
     const [state, dispatch] = useReducer(casinoReducer, initialState)
 
+    const checkOpenWindow = (gameName:string) => {
+        let checker = false;
+        state.games.forEach(element => (element?.name == gameName)&&(element.windowOpened)? checker = true:null);
+        return checker;
+    }
+
     let gameBlockRender = state.games.map((element:GamesType)=>(
         <div className="game-block">
             <div className="game-img-block">
@@ -33,11 +39,6 @@ const CasinoWindow = (props: PropsType) => {
             <button onClick={()=>{dispatch({type: ActionTypesGames.CHANGE_WINDOW_OPEN, id: element.id})}}>Играть</button>
         </div>
     ))
-    const checkOpenWindow = (gameName:string) => {
-        let checker = false;
-        state.games.forEach(element => (element?.name == gameName)&&(element.windowOpened)? checker = true:null);
-        return checker;
-    }
 
     return (
         <>
