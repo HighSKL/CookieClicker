@@ -1,16 +1,14 @@
-import React, { FC, useEffect, useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import "./../../Assets/styles/navigation_style.scss";
 import { GiHamburgerMenu, GiSchoolBag } from "react-icons/gi";
-import { FaShoppingCart } from "react-icons/fa";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CgShoppingCart } from "react-icons/cg";
 import ShopWindow from '../ShopWindow/ShopWindow';
 import InventoryWindow from '../InventoryWindow/InventoryWindow';
-import { MdOutlineCasino,MdCasino } from "react-icons/md";
+import { MdOutlineCasino } from "react-icons/md";
 import CasinoWindow from '../CasinoWindow/CasinoWindow';
 import navigationMenuReducer, { ActionsTypes, NavigationMenuInitialStateType } from '../../Redux/Reducers/navigationMenuReducer'
 
-const NavigationMenu: FC = () => {
+const NavigationMenu = () => {
 
     const [state, dispatch] = useReducer(navigationMenuReducer, {
         isSwitchedHamburgerMenu: false,
@@ -19,8 +17,6 @@ const NavigationMenu: FC = () => {
         isSwitchedGameMenuWindow: false
     } as NavigationMenuInitialStateType)
 
-    //@ts-ignore
-    window.stat = state
     return (
         <>
             {(state.isSwitchedShopWindow&&<ShopWindow closeWindow={()=>{dispatch({type: ActionsTypes.SET_OPEN_SHOP_WINDOW})}}/>)}

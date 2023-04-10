@@ -3,12 +3,38 @@
     height: 100%;
 }
 
+.loseGame{
+    width: 50%;
+    height: 90%;
+    background-color: rgba(0, 0, 0, 0.826);
+    border-radius: 2em;
+    position: absolute;
+    top: 4%;
+    right: 5%;
+    animation: showLoseGameWindow 1s ease;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p{
+        color: white;
+        font-size: 200%;
+        font-family: Stem;
+        font-weight: 600;
+    }
+}
+
+@keyframes showLoseGameWindow {
+    from{opacity: 0%;}
+    to{opacity: 100%;}
+}
+
 .game-area-container{
     width: 50%;
     height: 90%;
-    margin-top: 1.5%;
+    margin-top: 2.5%;
     float: right;
-    margin-right: 5%;
+    margin-right: 7%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr;
@@ -55,6 +81,8 @@
     float: left;
     width: 40%;
     height: 100%;
+    margin-left: 3%;
+    margin-top: 5vh;
 }
 
 .set-cookie-payed-block{
@@ -66,7 +94,7 @@
     input[type=range] {
         margin: 10px 0;
         appearance: none;
-        width: 100%;
+        width: 70%;
         float: left;
     }
     input[type=range]::-webkit-slider-runnable-track {
@@ -89,43 +117,45 @@
     }
 }
 
-.start-game-button{
-    margin-top: 100%;
+.range-container{
+    width: 100%;
+    float: left;
+}
 
+.settings-block-titile{
+    width: 100%;
+    float: left;
+    text-align: left;
+}
+
+.game-button{
+    margin-top: 70%;
+    margin-left: -50%;
     border: 0;
     border-radius: 5px;
-    background: rgb(50, 89, 202);
     color: #fff;
-    padding: 8px 16px;
     font-size: 100%;
-    &:hover {
-        background: rgb(41, 72, 164);
-      }
-      
+    padding: 8px 16px;
     &:focus {
         outline: none;
         box-shadow: 0 0 0 4px #cbd6ee;
     }
+}
+
+.start-game-button{
+    background: rgb(50, 89, 202);
+    &:hover {
+        background: rgb(41, 72, 164);
+      }
 }
 
 .end-game-button{
-    margin-top: 100%;
-
-    border: 0;
-    border-radius: 5px;
     background: rgb(202, 50, 50);
-    color: #fff;
-    padding: 8px 16px;
-    font-size: 100%;
     &:hover {
         background: rgb(41, 72, 164);
       }
-      
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 4px #cbd6ee;
-    }
 }
+
 
 @keyframes openCellAnimation {
     from{

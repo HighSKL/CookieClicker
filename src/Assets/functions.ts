@@ -14,5 +14,7 @@ export function shuffle<T>(array: T[]):T[]{
 }
 
 export let setBombs = (array: Array<CellType>, bombQuality: number) => {
+    for(let i = 0; i<bombQuality;i++)
+        array[i] = {...array[i], isBombContain: true}
     return array
 }

@@ -6,10 +6,10 @@ export type NavigationMenuInitialStateType = {
 }
 
 export enum ActionsTypes {
-    SET_OPEN_HAMBURGER_MENU = "SET-HAMBURGER-MENU-OPEN",
-    SET_OPEN_SHOP_WINDOW = 'SET-SHOP-WINDOW-OPEN',
-    SET_OPEN_INVENTORY_WINDOW = "SET-INVENTORY-OPEN",
-    SET_OPEN_GAME_WINDOW = "SET-GAME-OPEN"
+    SET_OPEN_HAMBURGER_MENU,
+    SET_OPEN_SHOP_WINDOW,
+    SET_OPEN_INVENTORY_WINDOW,
+    SET_OPEN_GAME_WINDOW
 }
 
 export default function navigationMenuReducer<Type>(state: NavigationMenuInitialStateType, action: any){

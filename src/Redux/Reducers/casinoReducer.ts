@@ -2,7 +2,8 @@ import { GamesType } from "../../Assets/Types/types"
 import { CasinoWindowInitialState } from "../../Components/CasinoWindow/CasinoWindow"
 
 export enum ActionTypesGames {
-    CHANGE_WINDOW_OPEN = "CHANGE_WINDOW_OPEN"
+    CHANGE_WINDOW_OPEN,
+    CLOSE_GAME_WINDOW
 }
 
 let casinoReducer = (state: CasinoWindowInitialState, action: any) => {
@@ -14,6 +15,8 @@ let casinoReducer = (state: CasinoWindowInitialState, action: any) => {
                 else
                     return {...element} 
             })}
+        case ActionTypesGames.CLOSE_GAME_WINDOW:
+            return{...state, games: state.games.map((element: GamesType)=>{return{...element, windowOpened: false}})}
         default:
             return state
     }

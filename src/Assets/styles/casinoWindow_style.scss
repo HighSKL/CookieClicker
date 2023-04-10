@@ -23,9 +23,18 @@
     float: left;
     overflow: hidden;
     .game-img-block{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
-        background-color: goldenrod;
         height: 17vh;
+        overflow: hidden;
+        border-bottom: .7px solid black;
+        img{
+            transition: .5s ease;
+            width: 90%;
+            object-fit: cover;
+        }
     }
     .game-name{
         font-family: Stem;

@@ -1,20 +1,18 @@
-import { useReducer, useState } from 'react';
-import { connect } from 'react-redux';
+import { useReducer } from 'react';
 import withModalWindow from '../../Assets/Common/withModalWindow';
-import { AppStateType } from '../../Redux/store';
 import '../../Assets/styles/casinoWindow_style.scss'
 import { GamesType } from '../../Assets/Types/types';
 import Sapper from './Games/Sapper/Sapper';
 import { random } from '../../Assets/functions';
 import casinoReducer, { ActionTypesGames } from '../../Redux/Reducers/casinoReducer';
+import sapperGameCover from '../../Assets/img/sapperGameCover.png'
 
 type PropsType = {
     closeWindow: () => void
 }
 const initialState = {
     games:[
-        {id: random(), name: "Минер", img: "none", windowOpened: false},
-        {id: random(), name: "Сапер", img: "none", windowOpened: false}
+        {id: random(), name: "Сапер", img: sapperGameCover, windowOpened: false}
     ] as Array<GamesType>
 }
 export type CasinoWindowInitialState = typeof initialState
@@ -33,7 +31,7 @@ const CasinoWindow = (props: PropsType) => {
     let gameBlockRender = state.games.map((element:GamesType)=>(
         <div className="game-block">
             <div className="game-img-block">
-                <img src="" alt="" />
+                <img src={element.img} alt="" />
             </div>
             <p className="game-name">{element.name}</p>
             <button onClick={()=>{dispatch({type: ActionTypesGames.CHANGE_WINDOW_OPEN, id: element.id})}}>Играть</button>
@@ -42,7 +40,7 @@ const CasinoWindow = (props: PropsType) => {
 
     return (
         <>
-        {checkOpenWindow("Минер")&&<Sapper />}
+        {checkOpenWindow("Минер")&&<Sapper closeWindow={()=>dispatch({type: ActionTypesGames.CLOSE_GAME_WINDOW})}/>}
         <div>
             <p className="casino-header">Казино</p>
             <div className="game-list">
@@ -53,6 +51,4 @@ const CasinoWindow = (props: PropsType) => {
     );
 };
 
-let mapStateToProps = (state: AppStateType) => ({})
-
-export default connect(mapStateToProps, {})(withModalWindow(CasinoWindow));
+export default withModalWindow(CasinoWindow);
