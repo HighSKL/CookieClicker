@@ -12,7 +12,7 @@ type PropsType = {
 }
 const initialState = {
     games:[
-        {id: random(), name: "Сапер", img: sapperGameCover, windowOpened: false}
+        {id: random(), name: "Сапёр", img: sapperGameCover, windowOpened: false}
     ] as Array<GamesType>
 }
 export type CasinoWindowInitialState = typeof initialState
@@ -40,7 +40,7 @@ const CasinoWindow = (props: PropsType) => {
 
     return (
         <>
-        {checkOpenWindow("Минер")&&<Sapper closeWindow={()=>dispatch({type: ActionTypesGames.CLOSE_GAME_WINDOW})}/>}
+        {checkOpenWindow("Сапёр")&&<Sapper closeWindow={()=>dispatch({type: ActionTypesGames.CLOSE_GAME_WINDOW})}/>}
         <div>
             <p className="casino-header">Казино</p>
             <div className="game-list">
