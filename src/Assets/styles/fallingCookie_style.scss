@@ -1,11 +1,12 @@
 .falling-cookie-block{
     animation: cookieFallAnim 10s ease;
-    position: absolute;
+    // position: absolute;
     animation-fill-mode: forwards;
     width: 5%;
     height: 5vh;
     z-index: 999;
     margin-top: -20%;
+    position: absolute;
     img{
         width: 100%;
     }

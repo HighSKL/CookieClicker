@@ -1,10 +1,9 @@
-import React, { FC, useState, useEffect } from 'react';
+import { useState } from 'react';
 import "./../../Assets/styles/mainPage_style.scss";
 import cookie from "./../../Assets/img/cookie_1.png"
 import { connect } from 'react-redux';
 import { AppStateType } from '../../Redux/store';
 import { GameStateInitialStateType, setBoosterTiming, setCookie, setPower } from '../../Redux/Reducers/gameStateReducer';
-import { IBooster } from '../../Assets/Types/types';
 import ActiveBoostersPanel from '../../Assets/Common/activeBoostersPanel';
 
 type PropsType = {
@@ -29,8 +28,8 @@ const MainPage = (props: PropsType) => {
     }
 
     return (
-        <div className="mainPage_wrapper">
-            <div className="boosters-container">
+        <div className="main-page_wrapper">
+            <div className="boosters">
                 <ActiveBoostersPanel />
             </div>
             <p className={`text ${activeClassName}`} style={{ position: 'absolute', marginLeft: ClientX + 'px', marginTop: (ClientY) + 'px' }}>+{props.gameState.cookiePower.resultPower()}</p>
